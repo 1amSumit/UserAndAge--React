@@ -1,0 +1,18 @@
+.list {
+  text-decoration: none;
+  background-color: #fff;
+  padding: 12px;
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  margin: 30px auto;
+  border-radius: 5px;
+}
+.content {
+  display: flex;
+  gap: 4px;
+  border: 1px solid black;
+  padding: 6px;
+}

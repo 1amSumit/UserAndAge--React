@@ -52,3 +52,15 @@
 .button:hover {
   opacity: 80%;
 }
+
+.form-control.invalid input {
+  background-color: rgb(194, 135, 135);
+}
+
+.form-control.invalid label {
+  color: red;
+}
+
+.form-control.ageInvalid .form-control__age {
+  background-color: yellow;
+}

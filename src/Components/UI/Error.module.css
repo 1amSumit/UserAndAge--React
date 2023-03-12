@@ -1,0 +1,21 @@
+.error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 30px 50px;
+  border-radius: 5px;
+  border: 2px solid black;
+  align-items: left;
+  /* z-index: 1000; */
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay {
+  filter: blur(4px);
+}

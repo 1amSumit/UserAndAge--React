@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import FormControl from "../FormComponents/FormControl";
+import Error from "../UI/Error";
 
 const NewUser = (props) => {
-  const [validAge, setVAlidAge] = useState(true);
+  // const [validAge, setValidAge] = useState(true);
   const getUserData = (userData) => {
-    const age = userData.age;
-    if (age >= validAge) {
-      setVAlidAge(true);
-    }
     props.sendUserData(userData);
   };
   return <FormControl sendUserData={getUserData} />;

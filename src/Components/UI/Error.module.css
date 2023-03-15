@@ -1,21 +1,61 @@
-.error {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  position: fixed;
+  top: 30vh;
+  left: 10%;
+  width: 80%;
+  z-index: 100;
+  overflow: hidden;
   background-color: #fff;
-  padding: 30px 50px;
-  border-radius: 5px;
-  border: 2px solid black;
-  align-items: left;
-  /* z-index: 1000; */
 }
 
-.message {
+.header {
+  background: #4f005f;
+  padding: 1rem;
+}
+
+.header h2 {
+  margin: 0;
+  color: white;
+}
+
+.content {
+  padding: 1rem;
+}
+
+.actions {
+  padding: 1rem;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
 }
 
-.overlay {
-  filter: blur(4px);
+.button {
+  padding: 6px 8px;
+  width: 120px;
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.button:hover {
+  opacity: 80%;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    left: calc(50% - 20rem);
+    width: 40rem;
+  }
 }

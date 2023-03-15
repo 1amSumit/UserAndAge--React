@@ -6,10 +6,15 @@ import Error from "../UI/Error";
 import Card from "../UI/Card";
 
 const FormControl = (props) => {
+  let message;
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
   const [isValid, setIsValid] = useState(true);
   const [validAge, setValidAge] = useState(true);
+
+  const getClickEvent = (value) => {
+    setValidAge(value);
+  };
 
   const onUserChangeHandler = (e) => {
     if (e.target.value.trim().length > 0) {
@@ -32,8 +37,15 @@ const FormControl = (props) => {
       return;
     }
 
+    if (+age < 1) {
+      setIsValid(false);
+      message = "Age can't be negative!!";
+      return;
+    }
+
     if (+age < 18) {
       setValidAge(false);
+      message = "Age can't be less than 18!!";
       return;
     }
     const userData = {
@@ -49,7 +61,13 @@ const FormControl = (props) => {
 
   return (
     <Card className={`${styles["form-control"]} ${!isValid && styles.invalid}`}>
-      {!validAge && <Error message={"age is less than 18 "} />}
+      {!validAge && (
+        <Error
+          getClickEvent={getClickEvent}
+          title={"Error Occured"}
+          message={message}
+        />
+      )}
       <form action="#" onSubmit={onSubmitHandler}>
         <div className={styles["form-control__username"]}>
           <label htmlFor="username">Username</label>
@@ -69,7 +87,7 @@ const FormControl = (props) => {
             name="age"
           />
         </div>
-        <button className={styles.button} type="submit">
+        <button type="submit" className={styles.button}>
           Add User
         </button>
       </form>

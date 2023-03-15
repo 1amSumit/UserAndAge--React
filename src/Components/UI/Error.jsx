@@ -9,7 +9,7 @@ const Error = (props) => {
   };
   return (
     <div>
-      <div className={styles.backdrop} />
+      <div onClick={onClickHandler} className={styles.backdrop} />
       <Card className={styles.modal}>
         <header className={styles.header}>
           <h2>{props.title}</h2>

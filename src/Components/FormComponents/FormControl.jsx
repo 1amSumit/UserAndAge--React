@@ -8,31 +8,23 @@ import Card from "../UI/Card";
 const FormControl = (props) => {
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
-  const [isValid, setIsValid] = useState(true);
   const [error, setError] = useState();
 
-  const getClickEvent = (value) => {
-    setIsValid(value);
+  const getClickEvent = () => {
+    setError(false);
   };
 
   const onUserChangeHandler = (e) => {
-    if (e.target.value.trim().length > 0) {
-      setIsValid(true);
-    }
     setUsername(e.target.value);
   };
 
   const onAgeChangeHandler = (e) => {
-    if (e.target.value >= 18) {
-      setIsValid(true);
-    }
     setAge(e.target.value);
   };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (username.trim().length === 0) {
-      setIsValid(false);
       setError({
         title: "Invalid Input",
         message: "Please enter a valid name and age (no-empty values)",
@@ -41,7 +33,6 @@ const FormControl = (props) => {
     }
 
     if (+age < 1) {
-      setIsValid(false);
       setError({
         title: "Invalid Age",
         message: "Please enter a valid age (age > 0)",
@@ -62,9 +53,9 @@ const FormControl = (props) => {
 
   return (
     <>
-      {!isValid && (
+      {error && (
         <Error
-          getClickEvent={getClickEvent}
+          onConfirm={getClickEvent}
           title={error.title}
           message={error.message}
         />
